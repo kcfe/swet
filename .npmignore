@@ -1,0 +1,38 @@
+# https://docs.npmjs.com/misc/developers#keeping-files-out-of-your-package
+
+# System
+.DS_Store
+.idea/
+.vscode/
+
+# Temp
+*.log
+*.cache
+*.diff
+*.patch
+*.tmp
+.eslintcache
+
+# tests
+__tests__/
+coverage/
+
+# linters
+.eslintrc
+.eslintignore
+
+# settings
+.prettierrc
+.npmrc
+tsconfig.json
+
+
+# Dependency
+node_modules/
+
+# Custermize
+scripts/
+examples/
+docs/
+src/
+
