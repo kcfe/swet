@@ -1,67 +1,67 @@
 {
   "name": "swet",
   "version": "0.0.0",
+  "private": true,
   "description": "",
-  "scripts": {
-    "boot": "node scripts/bootstrap.js",
-    "dev": "node scripts/dev.js",
-    "build": "node scripts/build.js",
-    "lint": "eslint 'packages/**/*.@(js|ts)'",
-    "format": "prettier --write 'packages/**/*.@(js|ts)'",
-    "test": "npm run test:once -- --watch",
-    "test:once": "jest --runInBand --colors --forceExit",
-    "coverage": "codecov",
-    "preinstall": "node ./scripts/preinstall.js",
-    "release": "node scripts/release.js"
-  },
   "repository": {
     "type": "git",
-    "url": ""
+    "url": "https://github.com/kcfe/swet"
   },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged",
-      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
-    }
+  "license": "MIT",
+  "author": "KCFE",
+  "scripts": {
+    "add-owner": "tsx scripts/add-owner",
+    "boot": "tsx scripts/bootstrap",
+    "build": "turbo run build",
+    "clean": "turbo run clean",
+    "coverage": "jest --coverage",
+    "dev": "turbo run dev",
+    "format": "prettier --write 'packages/**/*.{ts,tsx}'",
+    "preinstall": "npx only-allow pnpm",
+    "lint": "eslint 'packages/**/*.{ts,tsx}'",
+    "prepare": "husky install",
+    "release": "tsx scripts/release",
+    "test": "npm run test:once -- --watch",
+    "test:once": "jest --runInBand --colors --forceExit"
   },
   "lint-staged": {
-    "packages/**/*.{js,ts,jsx,tsx}": [
+    "packages/**/*.{ts,tsx}": [
       "prettier --write",
-      "eslint --fix",
-      "git add"
+      "eslint --fix"
     ]
   },
   "devDependencies": {
-    "@commitlint/cli": "^16.2.1",
-    "@commitlint/config-conventional": "^16.2.1",
-    "@eljs/node-utils": "^0.6.0",
-    "@eljs/release": "^0.6.0",
-    "@microsoft/api-extractor": "^7.19.4",
-    "@rollup/plugin-commonjs": "^21.0.2",
-    "@rollup/plugin-json": "^4.1.0",
-    "@rollup/plugin-node-resolve": "^13.1.3",
-    "@rollup/plugin-replace": "^4.0.0",
-    "@types/jest": "^27.4.1",
-    "@types/node": "^17.0.21",
-    "@typescript-eslint/eslint-plugin": "^5.13.0",
-    "@typescript-eslint/parser": "^5.13.0",
+    "@commitlint/cli": "^16.3.0",
+    "@commitlint/config-conventional": "^16.2.4",
+    "@eljs/release": "^0.9.2",
+    "@types/jest": "^27.5.2",
+    "@types/node": "^17.0.45",
+    "@typescript-eslint/eslint-plugin": "^5.36.0",
+    "@typescript-eslint/parser": "^5.36.0",
     "codecov": "^3.8.3",
-    "eslint": "^8.10.0",
+    "eslint": "^8.23.0",
     "eslint-config-prettier": "^8.5.0",
-    "husky": "^7.0.4",
+    "eslint-plugin-dirs": "^0.0.4",
+    "eslint-plugin-prettier": "^4.2.1",
+    "father": "^4.0.3",
+    "husky": "^8.0.1",
     "jest": "^27.5.1",
-    "lint-staged": "^12.3.4",
-    "prettier": "^2.5.1",
-    "rollup": "^2.69.0",
-    "rollup-plugin-typescript2": "^0.31.2",
-    "ts-jest": "^27.1.3",
-    "ts-node": "^10.6.0",
-    "tslib": "^2.3.1",
-    "typescript": "4.5.5"
+    "lint-staged": "^12.5.0",
+    "only-allow": "^1.1.1",
+    "prettier": "^2.7.1",
+    "prettier-plugin-organize-imports": "^3.1.0",
+    "prettier-plugin-packagejson": "^2.2.18",
+    "rimraf": "^3.0.2",
+    "strip-ansi": "^6.0.1",
+    "ts-jest": "^27.1.5",
+    "ts-node": "^10.9.1",
+    "tslib": "^2.4.0",
+    "tsx": "^3.9.0",
+    "turbo": "^1.4.3",
+    "typescript": "^4.8.2",
+    "zx": "^4.3.0"
   },
-  "author": "liquan",
   "publishConfig": {
-    "registry": "https://npm.corp.kuaishou.com/"
-  },
-  "license": "MIT"
+    "registry": "https://registry.npmjs.org"
+  }
 }

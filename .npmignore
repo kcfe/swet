@@ -1,11 +1,12 @@
-# https://docs.npmjs.com/misc/developers#keeping-files-out-of-your-package
+# https://docs.npmjs.com/cli/v8/using-npm/developers#keeping-files-out-of-your-package
 
-# System
+# system
 .DS_Store
 .idea/
 .vscode/
 
-# Temp
+# temp
+temp/
 *.log
 *.cache
 *.diff
@@ -13,26 +14,25 @@
 *.tmp
 .eslintcache
 
-# tests
+# test
 __tests__/
 coverage/
 
-# linters
-.eslintrc
+# linter
+.eslintrc*
+.eslintrc.*
 .eslintignore
 
-# settings
+# prettier
 .prettierrc
-.npmrc
+prettier.config.js
+
+# setting
 tsconfig.json
+tsconfig.*.json
 
-
-# Dependency
-node_modules/
-
-# Custermize
+# other
+src/
 scripts/
 examples/
 docs/
-src/
-

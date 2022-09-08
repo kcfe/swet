@@ -4,25 +4,28 @@
     {
       "type": "node",
       "request": "launch",
-      "name": "Current File",
+      "name": "Active File",
+      "runtimeExecutable": "/Users/ender/.nvm/versions/node/v16.15.0/bin/node",
       "program": "${workspaceRoot}/node_modules/ts-node/dist/bin.js",
+      "windows": {
+        "program": "${workspaceFolder}/node_modules/ts-node/bin/ts-node"
+      },
       "args": ["-O", "{\"module\": \"commonjs\"}", "--files", "${file}"],
       "cwd": "${workspaceRoot}",
-      "protocol": "inspector",
       "console": "integratedTerminal"
     },
     {
       "type": "node",
       "request": "launch",
-      "name": "Jest Current File",
+      "name": "Jest Active File",
+      "runtimeExecutable": "/usr/local/bin/node",
       "program": "${workspaceFolder}/node_modules/.bin/jest",
-      "args": ["${fileBasenameNoExtension}", "--config", "jest.config.js"],
-      "console": "integratedTerminal",
-      "internalConsoleOptions": "neverOpen",
-      "disableOptimisticBPs": true,
       "windows": {
         "program": "${workspaceFolder}/node_modules/jest/bin/jest"
-      }
+      },
+      "args": ["${fileBasenameNoExtension}", "--config", "jest.config.js"],
+      "console": "integratedTerminal",
+      "internalConsoleOptions": "neverOpen"
     }
   ]
 }

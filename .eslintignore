@@ -1,10 +1,4 @@
-# javascript
-dist/
-scripts/
-
-# settiing
-*.base.js
-*.config.js
-
-# test
-__tests__/**/*.js
+**/lib
+**/dist
+**/*.js
+**/*.d.ts

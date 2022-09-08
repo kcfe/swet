@@ -2,10 +2,12 @@
 module.exports = {
   testEnvironment: 'jsdom',
   preset: 'ts-jest',
+  setupFilesAfterEnv: ['<rootDir>/scripts/setup-jest-env.ts'],
   rootDir: __dirname,
   globals: {
     __DEV__: true,
     __TEST__: true,
+    // eslint-disable-next-line @typescript-eslint/no-var-requires
     __VERSION__: require('./package.json').version,
     __GLOBAL__: false,
     __ESM__: true,
@@ -24,7 +26,7 @@ module.exports = {
   watchPathIgnorePatterns: ['/node_modules/', '/dist/', '/.git/'],
   moduleFileExtensions: ['ts', 'tsx', 'js', 'json'],
   moduleNameMapper: {
-    '^@test/(.*?)$': '<rootDir>/packages/$1/src',
+    '^@swet}/(.*?)$': '<rootDir>/packages/$1/src',
   },
   testMatch: ['<rootDir>/packages/**/__tests__/**/*spec.[jt]s?(x)'],
   testPathIgnorePatterns: ['/node_modules/', '/examples/__tests__'],
