@@ -20,6 +20,7 @@
     "preinstall": "npx only-allow pnpm",
     "lint": "eslint 'packages/**/*.{ts,tsx}'",
     "prepare": "husky install",
+    "preCommit": "lint-staged",
     "release": "tsx scripts/release",
     "test": "npm run test:once -- --watch",
     "test:once": "jest --runInBand --colors --forceExit"

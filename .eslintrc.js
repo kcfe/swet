@@ -9,7 +9,7 @@ module.exports = {
   rules: {
     'prettier/prettier': 'error',
     '@typescript-eslint/naming-convention': [
-      'error',
+      'off',
       {
         selector: 'default',
         format: ['camelCase', 'PascalCase', 'UPPER_CASE'],
@@ -21,8 +21,6 @@ module.exports = {
         modifiers: ['private'],
       },
     ],
-    '@typescript-eslint/explicit-member-accessibility': 'error',
-    '@typescript-eslint/no-explicit-any': 'error',
     '@typescript-eslint/no-unused-vars': 'error',
     '@typescript-eslint/no-shadow': 'off',
     '@typescript-eslint/no-non-null-assertion': 'error',
@@ -31,7 +29,7 @@ module.exports = {
       'error',
       {
         '**/*.md/*': '.*',
-        '**/*': '^[a-z0-9\\-\\.]+$',
+        '**/*': '^[a-z0-9A-Z\\-\\.]+$',
       },
     ],
     'import/order': 'off',

@@ -5,9 +5,7 @@ function format(label: string, msg: string): string {
   return msg
     .split('\n')
     .map((line, i) => {
-      return i === 0
-        ? `${label} ${line}`
-        : line.padStart(stripAnsi(label).length + line.length + 1)
+      return i === 0 ? `${label} ${line}` : line.padStart(stripAnsi(label).length + line.length + 1)
     })
     .join('\n')
 }

@@ -9,6 +9,7 @@
 *.patch
 *.tmp
 .eslintcache
+*.turbo
 
 # Coverage
 coverage/
@@ -19,4 +20,9 @@ node_modules/
 
 # Custermize
 dist/
+lib/
 *.local.*
+swet.config.*
+apis/
+services/
+mock/

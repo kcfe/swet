@@ -2,7 +2,7 @@
 module.exports = {
   testEnvironment: 'jsdom',
   preset: 'ts-jest',
-  setupFilesAfterEnv: ['<rootDir>/scripts/setup-jest-env.ts'],
+  // setupFilesAfterEnv: ['<rootDir>/scripts/setup-jest-env.ts'],
   rootDir: __dirname,
   globals: {
     __DEV__: true,
@@ -21,9 +21,10 @@ module.exports = {
     },
   },
   coverageDirectory: 'coverage',
+  collectCoverage: true,
   coverageReporters: ['html', 'lcov', 'text'],
-  collectCoverageFrom: ['packages/*/src/**/*.ts'],
-  watchPathIgnorePatterns: ['/node_modules/', '/dist/', '/.git/'],
+  collectCoverageFrom: ['packages/parser/src/**/*.ts'],
+  watchPathIgnorePatterns: ['/node_modules/', '/lib/', '/.git/'],
   moduleFileExtensions: ['ts', 'tsx', 'js', 'json'],
   moduleNameMapper: {
     '^@swet}/(.*?)$': '<rootDir>/packages/$1/src',

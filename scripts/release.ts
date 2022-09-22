@@ -12,7 +12,6 @@ main().catch((err: Error) => {
   process.exit(1)
 })
 
-
 async function main(): Promise<void> {
   const isGitClean = (await $`git status --porcelain`).stdout.trim().length
 
