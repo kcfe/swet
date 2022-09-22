@@ -1,0 +1,1132 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "description": "XX项目描述",
+    "version": "1.0",
+    "title": "XX项目接口文档",
+    "contact": {
+      "name": "作者",
+      "url": "作者URL",
+      "email": "作者Email"
+    }
+  },
+  "host": "",
+  "basePath": "/",
+  "tags": [
+    {
+      "name": "user-controller",
+      "description": "User Controller"
+    }
+  ],
+  "paths": {
+    "/users": {
+      "get": {
+        "tags": ["user-controller"],
+        "summary": "用户列表",
+        "operationId": "usersUsingGET",
+        "produces": ["*/*"],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Result«List«User»»"
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      },
+      "post": {
+        "tags": ["user-controller"],
+        "summary": "保存用户",
+        "operationId": "saveUsingPOST",
+        "consumes": ["application/json"],
+        "produces": ["*/*"],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "user",
+            "description": "user",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/User"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Result«User»"
+            }
+          },
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      }
+    },
+    "/users/getByUserId": {
+      "get": {
+        "tags": ["user-controller"],
+        "summary": "?id获取用户",
+        "operationId": "getByUserIdUsingGET",
+        "produces": ["*/*"],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "description": "id",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Result«User»"
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      }
+    },
+    "/users/respUserMap": {
+      "post": {
+        "tags": ["user-controller"],
+        "summary": "以Map入参",
+        "operationId": "respUserMapUsingPOST",
+        "consumes": ["application/json"],
+        "produces": ["*/*"],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "userMap",
+            "description": "userMap",
+            "required": true,
+            "schema": {
+              "type": "object"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Result«Map«string,User»»"
+            }
+          },
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      }
+    },
+    "/users/saveUserParam": {
+      "post": {
+        "tags": ["user-controller"],
+        "summary": "保存用户",
+        "operationId": "saveUserParamUsingPOST",
+        "consumes": ["application/json"],
+        "produces": ["*/*"],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "id",
+            "description": "id",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            },
+            "enum": [{}]
+          },
+          {
+            "in": "body",
+            "name": "name",
+            "description": "name",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "body",
+            "name": "age",
+            "description": "age",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Result«User»"
+            }
+          },
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      }
+    },
+    "/users/saveUserWithOutParam": {
+      "post": {
+        "tags": ["user-controller"],
+        "summary": "保存用户",
+        "operationId": "saveUserWithOutParamUsingPOST",
+        "produces": ["*/*"],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "user",
+            "description": "user",
+            "required": false,
+            "schema": {
+              "$ref": "#/definitions/User"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Result«User»"
+            }
+          },
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      }
+    },
+    "/users/upload": {
+      "post": {
+        "tags": ["user-controller"],
+        "summary": "上传身份证",
+        "operationId": "idCardUsingPOST",
+        "consumes": ["multipart/form-data"],
+        "produces": ["*/*"],
+        "parameters": [
+          {
+            "name": "file",
+            "in": "formData",
+            "description": "file",
+            "required": true,
+            "type": "object"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Result«string»"
+            }
+          },
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      }
+    },
+    "/users/{id}": {
+      "get": {
+        "tags": ["user-controller"],
+        "summary": "路径id获取用户",
+        "operationId": "userByIdUsingGET",
+        "produces": ["*/*"],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "id",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Result«User»"
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      },
+      "put": {
+        "tags": ["user-controller"],
+        "summary": "更新",
+        "operationId": "updateUsingPUT",
+        "consumes": ["application/json"],
+        "produces": ["*/*"],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "id",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "in": "body",
+            "name": "user",
+            "description": "user",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/User"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Result«User»"
+            }
+          },
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      }
+    },
+    "/users/edit": {
+      "get": {
+        "summary": "编辑用户",
+        "operationId": "usereditUsingGET",
+        "produces": ["*/*"],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "description": "id",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "in": "path",
+            "description": "id3",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "name": "id2",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Result«User»"
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      },
+      "put": {
+        "tags": ["user-controller"],
+        "summary": "更新",
+        "operationId": "updateUsingPUT",
+        "consumes": ["application/json"],
+        "produces": ["*/*"],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "id",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "in": "body",
+            "name": "user",
+            "description": "user",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/User"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Result«User»"
+            }
+          },
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      }
+    },
+    "/rest/admin/accounts/register/upload": {
+      "post": {
+        "tags": ["account-admin-controller"],
+        "summary": "上传批量开通广告主账号文件",
+        "description": "下载模板文件",
+        "operationId": "uploadRegisterAccountUsingPOST",
+        "consumes": ["multipart/form-data"],
+        "produces": ["*/*"],
+        "parameters": [
+          {
+            "name": "file",
+            "in": "formData",
+            "description": "file",
+            "required": true,
+            "type": "file"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Message«UploadRegisterAccountResp»"
+            }
+          },
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      }
+    },
+    "/rest/dsp/agent/control-panel/finance/bail/deduction/list/v2": {
+      "post": {
+        "tags": ["ad-dsp-agent-transfer-controller"],
+        "summary": "保证金处罚记录",
+        "operationId": "listAgentBailDeductionV2UsingPOST_1",
+        "consumes": ["application/json"],
+        "produces": ["*/*"],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "agentBailDecRecordParam",
+            "description": "agentBailDecRecordParam",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/AgentBailDecRecordParam"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      }
+    },
+    "/rest/dsp/agent/info": {
+      "post": {
+        "tags": ["ad-dsp-agent-info-controller"],
+        "summary": "Dsp代理商信息V1",
+        "operationId": "agentInfoUsingPOST",
+        "consumes": ["application/json"],
+        "produces": ["*/*"],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/AgentDspInfoVO"
+            }
+          },
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      }
+    },
+    "/rest/menu/add": {
+      "post": {
+        "description": "新建页面节点",
+        "tags": ["menu-controller"],
+        "operationId": "menuAddUsingPOST",
+        "summary": "新建页面节点",
+        "responses": {
+          "200": {
+            "description": "请求成功",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "number",
+                      "description": "页面节点id"
+                    },
+                    "title": {
+                      "type": "string",
+                      "description": "页面节点标题"
+                    },
+                    "status": {
+                      "type": "boolean",
+                      "description": "页面节点状态"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/rest/dsp/agent/notify/policy/confirm": {
+      "post": {
+        "tags": ["policy-notify-controller"],
+        "summary": "批量确认政策",
+        "operationId": "confirmUsingPOST_1",
+        "consumes": ["application/json"],
+        "produces": ["*/*"],
+        "deprecated": true,
+        "parameters": [
+          {
+            "name": "ids",
+            "in": "query",
+            "description": "ids",
+            "required": true,
+            "type": "array",
+            "items": {
+              "type": "integer",
+              "format": "int64"
+            },
+            "collectionFormat": "multi"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Message«boolean»"
+            }
+          },
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      }
+    },
+    "/rest/agent/material/addMaterial": {
+      "post": {
+        "tags": ["material-controller"],
+        "summary": "批量添加素材接口",
+        "operationId": "addMaterialUsingPOST",
+        "consumes": ["application/json"],
+        "produces": ["*/*"],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "requests",
+            "description": "requests",
+            "required": true,
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/AddMaterialRequest"
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Message«AddMaterialResp»"
+            }
+          },
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "Result«List«User»»": {
+      "type": "object",
+      "properties": {
+        "data": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/User"
+          }
+        },
+        "message": {
+          "type": "string"
+        }
+      },
+      "title": "Result«List«User»»"
+    },
+    "Result«Map«string,User»»": {
+      "type": "object",
+      "description": "测试秒速信息",
+      "properties": {
+        "data": {
+          "type": "object",
+          "additionalProperties": {
+            "$ref": "#/definitions/Result«List«User»»"
+          }
+        },
+        "message": {
+          "type": "string"
+        }
+      },
+      "title": "Result«Map«string,User»»"
+    },
+    "Result«Map«string,User2»»": {
+      "type": "object",
+      "additionalProperties": {
+        "$ref": "#/definitions/User"
+      }
+    },
+    "Result«User»": {
+      "type": "object",
+      "required": ["data", "message"],
+      "properties": {
+        "data": {
+          "$ref": "#/definitions/User"
+        },
+        "message": {
+          "type": "string"
+        }
+      },
+      "title": "Result«User»"
+    },
+    "Result«string»": {
+      "type": "object",
+      "properties": {
+        "data": {
+          "type": "string"
+        },
+        "message": {
+          "type": "string"
+        }
+      },
+      "title": "Result«string»"
+    },
+    "User": {
+      "type": "object",
+      "properties": {
+        "age": {
+          "type": "integer",
+          "format": "int32",
+          "description": "用户年龄",
+          "allowEmptyValue": true
+        },
+        "id": {
+          "type": "integer",
+          "format": "int64",
+          "description": "用户ID",
+          "allowEmptyValue": true
+        },
+        "name": {
+          "type": "string",
+          "description": "用户名称",
+          "allowEmptyValue": false
+        }
+      },
+      "title": "User",
+      "description": "用户信息"
+    },
+    "UserMapTest": {
+      "type": "object"
+    },
+    "UserMapTest2": {},
+    "Message«UploadRegisterAccountResp»": {
+      "type": "object",
+      "properties": {
+        "data": {
+          "$ref": "#/definitions/UploadRegisterAccountResp"
+        }
+      },
+      "title": "Message«UploadRegisterAccountResp»"
+    },
+    "UploadRegisterAccountResp": {
+      "type": "object",
+      "properties": {
+        "resultFileName": {
+          "type": "string",
+          "description": "执行结果文件",
+          "allowEmptyValue": false
+        },
+        "resultNumMap": {
+          "type": "object",
+          "description": "执行结果数量",
+          "allowEmptyValue": false,
+          "additionalProperties": {
+            "type": "integer",
+            "format": "int64"
+          }
+        },
+        "pageInfo": {
+          "description": "页面信息",
+          "allowEmptyValue": false,
+          "$ref": "#/definitions/PageInfo"
+        }
+      },
+      "title": "UploadRegisterAccountResp"
+    },
+    "AgentBailDecRecordParam": {
+      "type": "object",
+      "required": ["bailType", "endTime", "startTime"],
+      "properties": {
+        "bailType": {
+          "type": "string",
+          "description": "保证金类型",
+          "allowEmptyValue": true,
+          "enum": [
+            "RECHARGE_TYPE_UNKNOWN",
+            "CASH",
+            "CREDIT_REPAYMENT",
+            "AGENT_RISK_SECURITY_DEPOSIT",
+            "ADVERTISER_FRAME_SECURITY_DEPOSIT",
+            "PLATFORM_BANK_INFO",
+            "AGENT_CREDIT",
+            "AGENT_BIZ_COOP_MARGIN",
+            "AGENT_BRAND_FRAME_MARGIN",
+            "AGENT_MARGIN",
+            "AGENT_COM_FRAME",
+            "INNER_TRANSFER",
+            "VIRTUAL_REPAYMENT",
+            "CONTRACT_BRAND_FRAME_MARGIN",
+            "CONTRACT_FRAME_MARGIN",
+            "SYNC_CASH",
+            "UNRECOGNIZED"
+          ]
+        },
+        "endTime": {
+          "type": "integer",
+          "format": "int64",
+          "description": "结束时间",
+          "allowEmptyValue": false
+        },
+        "invoiceStatus": {
+          "type": "integer",
+          "format": "int32",
+          "description": "发票状态",
+          "allowEmptyValue": false
+        },
+        "pageInfo": {
+          "description": "页面信息",
+          "allowEmptyValue": false,
+          "$ref": "#/definitions/PageInfo"
+        },
+        "startTime": {
+          "type": "integer",
+          "format": "int64",
+          "description": "开始时间",
+          "allowEmptyValue": false
+        }
+      },
+      "title": "AgentBailDecRecordParam",
+      "description": "保证金处罚记录"
+    },
+    "PageInfo": {
+      "type": "object",
+      "properties": {
+        "currentPage": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "pageSize": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "totalCount": {
+          "type": "integer",
+          "format": "int64"
+        }
+      },
+      "title": "PageInfo"
+    },
+    "AgentDspInfoVO": {
+      "type": "object",
+      "properties": {
+        "adDspAgent": {
+          "description": "代理商信息",
+          "allowEmptyValue": false,
+          "$ref": "#/definitions/AgentInfoView"
+        },
+        "agentV2": {
+          "type": "boolean"
+        },
+        "bailDetails": {
+          "type": "array",
+          "description": "保证金详情",
+          "allowEmptyValue": false,
+          "items": {
+            "$ref": "#/definitions/BailDetailVO"
+          }
+        },
+        "clientNames": {
+          "type": "array",
+          "description": "客户名称",
+          "allowEmptyValue": false,
+          "items": {
+            "type": "string"
+          }
+        },
+        "enablePaymentModeForH5": {
+          "type": "array",
+          "description": "代理商在H5端可以充值的方式",
+          "allowEmptyValue": false,
+          "items": {
+            "type": "string",
+            "enum": ["CORPORATE_BANK", "WECHAT", "ALIPAY"]
+          }
+        },
+        "platformCharge": {
+          "type": "object",
+          "description": "代理商不同投放平台花费信息，key-投放平台类型，value-花费(厘)",
+          "allowEmptyValue": false,
+          "additionalProperties": {
+            "type": "integer",
+            "format": "int64"
+          }
+        },
+        "restrictedAccounts": {
+          "type": "array",
+          "description": "充值限制账号",
+          "allowEmptyValue": false,
+          "items": {
+            "$ref": "#/definitions/AgentRestrictedAccountsConf"
+          }
+        },
+        "ucType": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "enum": [
+              "DSP",
+              "ADX",
+              "BRAND",
+              "ESP",
+              "RRM",
+              "MOBILE_CHANNEL_ESP",
+              "DSP_MAPI",
+              "ALL_ESP",
+              "ALL_DSP"
+            ]
+          }
+        },
+        "whiteList": {
+          "description": "白名单列表",
+          "allowEmptyValue": false,
+          "$ref": "#/definitions/AgentWhiteListVO"
+        },
+        "userId": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "loginTime": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "birthTime": {
+          "type": "string"
+        },
+        "avatarUrl": {
+          "type": "string"
+        },
+        "avatarImgUrl": {
+          "type": "string"
+        },
+        "userEmail": {
+          "type": "string"
+        },
+        "region": {
+          "type": "string"
+        },
+        "province": {
+          "type": "string"
+        },
+        "city": {
+          "type": "string"
+        },
+        "county": {
+          "type": "string"
+        },
+        "zip": {
+          "type": "string"
+        },
+        "sex": {
+          "type": "integer",
+          "format": "int64",
+          "enum": [1]
+        },
+        "userTitle": {
+          "type": "string"
+        }
+      },
+      "title": "AgentDspInfoVO",
+      "description": "Dsp代理商详情VO"
+    },
+    "BailDetailVO": {
+      "type": "object",
+      "properties": {
+        "marginType": {
+          "type": "string",
+          "description": "保证金类型",
+          "allowEmptyValue": false,
+          "enum": [
+            "RECHARGE_TYPE_UNKNOWN",
+            "CASH",
+            "CREDIT_REPAYMENT",
+            "AGENT_RISK_SECURITY_DEPOSIT",
+            "ADVERTISER_FRAME_SECURITY_DEPOSIT",
+            "PLATFORM_BANK_INFO",
+            "AGENT_CREDIT"
+          ]
+        },
+        "paidBailAmount": {
+          "type": "integer",
+          "format": "int64",
+          "description": "保证金已缴金额",
+          "allowEmptyValue": false
+        }
+      },
+      "title": "BailDetailVO",
+      "description": "保证金详情VO"
+    },
+    "AgentRestrictedAccountsConf": {
+      "type": "object",
+      "properties": {
+        "industry": {
+          "type": "string",
+          "description": "一级行业",
+          "allowEmptyValue": false
+        },
+        "ucType": {
+          "type": "string",
+          "description": "账户类型",
+          "allowEmptyValue": false,
+          "enum": [
+            "DSP",
+            "ADX",
+            "BRAND",
+            "ESP",
+            "RRM",
+            "MOBILE_CHANNEL_ESP",
+            "DSP_MAPI",
+            "ALL_ESP",
+            "ALL_DSP"
+          ]
+        }
+      },
+      "title": "AgentRestrictedAccountsConf"
+    },
+    "AgentWhiteListVO": {
+      "type": "object",
+      "properties": {
+        "dspCopyAccounts": {
+          "type": "boolean",
+          "example": false,
+          "description": "DSP复制开户",
+          "allowEmptyValue": false
+        },
+        "enableTicketType": {
+          "type": "array",
+          "description": "可用的工单分类",
+          "allowEmptyValue": false,
+          "items": {
+            "type": "string"
+          }
+        },
+
+        "ticketPageVisible": {
+          "type": "boolean",
+          "example": false,
+          "description": "是否有权限进入工单页面",
+          "allowEmptyValue": false
+        },
+        "ticketTypeForCreate": {
+          "type": "array",
+          "description": "可创建的工单分类",
+          "allowEmptyValue": false
+        }
+      },
+      "title": "AgentWhiteListVO",
+      "description": "外部代理商白名单功能列表"
+    },
+    "TestMapWithArrayString": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        }
+      }
+    },
+    "TestMapWithArrayRef": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "$ref": "#/definitions/AgentDspInfoVO"
+        }
+      }
+    },
+    "TestMapWithoutItems": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "array"
+      }
+    }
+  }
+}

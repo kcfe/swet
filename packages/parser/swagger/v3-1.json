@@ -1,0 +1,473 @@
+{
+  "openapi": "3.0.0",
+  "paths": {
+    "/rest/light/app/add": {
+      "post": {
+        "operationId": "addAppToLight",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "developers": {
+                    "type": "array",
+                    "title": "开发人员列表",
+                    "default": []
+                  },
+                  "appId": {
+                    "type": "number",
+                    "title": "应用ID"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "success",
+            "application/json": {
+              "schema": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "tags": ["app-controller"]
+      }
+    },
+    "/rest/light/app/list": {
+      "get": {
+        "operationId": "getAppList",
+        "parameters": [
+          {
+            "required": false,
+            "name": "appName",
+            "in": "query",
+            "description": "应用名称",
+            "schema": {}
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "success",
+            "isArray": true
+          }
+        },
+        "tags": ["app-controller"]
+      }
+    },
+    "/rest/light/app/update": {
+      "post": {
+        "operationId": "",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "number",
+                    "title": "应用Id"
+                  },
+                  "remark": {
+                    "type": "string",
+                    "title": "应用备注"
+                  },
+                  "developers": {
+                    "type": "array",
+                    "title": "开发人员列表",
+                    "default": []
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "success",
+            "isArray": false
+          }
+        },
+        "tags": ["app-controller"]
+      }
+    },
+    "/rest/light/app/{id}": {
+      "get": {
+        "operationId": "getAppDetail",
+        "parameters": [
+          {
+            "required": true,
+            "name": "id",
+            "in": "path",
+            "description": "应用Id",
+            "schema": {
+              "type": "number"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": ["app-controller"]
+      }
+    },
+    "/rest/light/guide/queryAll": {
+      "get": {
+        "operationId": "queryAllGuideGET",
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": ["guide-controller"]
+      }
+    },
+    "/rest/light/guide/queryByType": {
+      "get": {
+        "operationId": "addAppToLightGET",
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": ["guide-controller"]
+      }
+    },
+    "/rest/light/guide/create": {
+      "post": {
+        "operationId": "createGuidePOST",
+        "responses": {
+          "201": {
+            "description": ""
+          }
+        },
+        "tags": ["guide-controller"]
+      }
+    },
+    "/rest/light/guide/update": {
+      "post": {
+        "operationId": "updateGuideInfoPOST",
+        "responses": {
+          "201": {
+            "description": ""
+          }
+        },
+        "tags": ["guide-controller"]
+      }
+    },
+    "/rest/light/guide/saveAndDeploy": {
+      "post": {
+        "operationId": "saveAndDeployPOST",
+        "responses": {
+          "201": {
+            "description": ""
+          }
+        },
+        "tags": ["guide-controller"]
+      }
+    },
+    "/rest/light/guide/depoly": {
+      "post": {
+        "operationId": "depolyGuidePOST",
+        "responses": {
+          "201": {
+            "description": ""
+          }
+        },
+        "tags": ["guide-controller"]
+      }
+    },
+    "/rest/light/open/users": {
+      "post": {
+        "operationId": "queryUserInfo",
+        "parameters": [],
+        "requestBody": {
+          "required": false,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "userList": {
+                    "type": "array",
+                    "default": [],
+                    "title": "要搜索的用户名列表 string[]"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": ""
+          }
+        },
+        "tags": ["open-controller"]
+      }
+    },
+    "/rest/light/open/queryUser": {
+      "get": {
+        "operationId": "queryOpenApiUser",
+        "parameters": [
+          {
+            "required": false,
+            "name": "name",
+            "in": "query",
+            "description": "模糊匹配关键字",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": ["open-controller"]
+      }
+    },
+    "/rest/light/open/upload": {
+      "post": {
+        "operationId": "uploadFile",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "appId": {
+                    "type": "number",
+                    "title": "应用Id"
+                  },
+                  "file": {
+                    "type": "file",
+                    "title": "文件"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": ""
+          }
+        },
+        "tags": ["open-controller"]
+      }
+    },
+    "/rest/light/open/queryApp": {
+      "post": {
+        "operationId": "queryAppFromGate",
+        "parameters": [
+          {
+            "required": false,
+            "name": "pageSize",
+            "in": "query",
+            "description": "每页大小",
+            "schema": {
+              "type": "number"
+            }
+          },
+          {
+            "required": false,
+            "name": "pageNo",
+            "in": "query",
+            "description": "请求页数 从1开始",
+            "schema": {
+              "type": "number"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": ""
+          }
+        },
+        "tags": ["open-controller"]
+      }
+    },
+    "/rest/light/question/query": {
+      "get": {
+        "operationId": "getQuestionList",
+        "parameters": [
+          {
+            "required": false,
+            "name": "question",
+            "in": "query",
+            "description": "问题内容，后端模糊匹配",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "required": false,
+            "name": "pageSize",
+            "in": "query",
+            "description": "每页大小",
+            "schema": {
+              "type": "number"
+            }
+          },
+          {
+            "required": true,
+            "name": "pageNo",
+            "in": "query",
+            "description": "请求页数 从1开始",
+            "schema": {
+              "type": "number"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": ["question-controller"]
+      }
+    },
+    "/rest/light/question/createOrUpdate": {
+      "post": {
+        "operationId": "createOrUpdateQuestion",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "title": "更新时传问答ID， 新增时为空",
+                    "type": "number"
+                  },
+                  "question": {
+                    "title": "问题内容",
+                    "type": "string"
+                  },
+                  "type": {
+                    "title": "问答类型",
+                    "type": "number",
+                    "enum": [
+                      {
+                        "0": "文字类"
+                      },
+                      {
+                        "1": "步骤类"
+                      },
+                      {
+                        "2": "蒙层类"
+                      },
+                      {
+                        "3": "动画/视频类"
+                      }
+                    ]
+                  },
+                  "answer": {
+                    "title": "文字类回答内容",
+                    "type": "string"
+                  },
+                  "answerId": {
+                    "title": "其他类型关联的引导Id",
+                    "type": "number"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": ""
+          }
+        },
+        "tags": ["question-controller"]
+      }
+    },
+    "/rest/light/question/{id}": {
+      "get": {
+        "operationId": "querySingleQuestion",
+        "parameters": [
+          {
+            "required": true,
+            "name": "id",
+            "in": "path",
+            "description": "问题ID",
+            "schema": {
+              "type": "number"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": ["question-controller"]
+      },
+      "delete": {
+        "operationId": "deleteQuestion",
+        "parameters": [
+          {
+            "required": true,
+            "name": "id",
+            "in": "path",
+            "description": "问题ID",
+            "schema": {
+              "type": "number"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": ["question-controller"]
+      }
+    }
+  },
+  "info": {
+    "title": "荧光系统接口文档",
+    "description": "",
+    "version": "1.0",
+    "contact": {
+      "name": "v1.0.0 - json",
+      "url": ""
+    }
+  },
+  "tags": [
+    {
+      "name": "app-controller",
+      "description": ""
+    },
+    {
+      "name": "guide-controller",
+      "description": ""
+    },
+    {
+      "name": "open-controller",
+      "description": ""
+    },
+    {
+      "name": "question-controller",
+      "description": ""
+    }
+  ],
+  "servers": [],
+  "components": {}
+}

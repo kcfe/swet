@@ -1,0 +1,37 @@
+{
+  "name": "@swet/parser",
+  "version": "0.0.0",
+  "description": "@swet/parser",
+  "keywords": [
+    "swet",
+    "parser"
+  ],
+  "homepage": "https://github.com/kcfe/swettree/master/packages/parser#readme",
+  "bugs": {
+    "url": "https://github.com/kcfe/swet/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/kcfe/swet"
+  },
+  "license": "MIT",
+  "author": "KCFE",
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
+  "files": [
+    "lib"
+  ],
+  "scripts": {
+    "build": "father build",
+    "clean": "rimraf lib && rimraf node_modules/.cache/father",
+    "dev": "father dev"
+  },
+  "dependencies": {
+    "prettier": "^2.6.2",
+    "mockjs": "^1.1.0"
+  },
+  "devDependencies": {
+    "@types/mockjs": "^1.0.6",
+    "@types/prettier": "^2.7.0"
+  }
+}
