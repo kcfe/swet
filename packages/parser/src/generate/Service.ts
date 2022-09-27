@@ -1,4 +1,4 @@
-import { StandardType, StandardService, StandardInterface } from '../types'
+import { StandardInterface, StandardService, StandardType } from '../types'
 import { getPropertyDependenceModel, transformPropertyToCode } from '../utils'
 
 interface ServicePayload {

@@ -1,10 +1,10 @@
 import {
   Method,
-  StandardType,
-  StandardService,
-  StandardProperty,
-  StandardInterface,
   StandardDataSource,
+  StandardInterface,
+  StandardProperty,
+  StandardService,
+  StandardType,
 } from '../types'
 
 /**

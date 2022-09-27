@@ -1,13 +1,13 @@
 import {
   Method,
-  StandardType,
-  StandardService,
   ServiceParameter,
-  StandardProperty,
   StandardInterface,
+  StandardProperty,
+  StandardService,
+  StandardType,
 } from '../types'
 import { modelNameFormatter } from '../utils'
-import { SwaggerV2DataSource, SwaggerToStandard } from './types'
+import { SwaggerToStandard, SwaggerV2DataSource } from './types'
 import { findSchema, transformSchemaToStandardProperty } from './utils'
 
 /**

@@ -1,6 +1,6 @@
-import { modelNameFormatter, isObject } from '../utils'
-import { SwaggerSchema, SwaggerToStandard, SwaggerVersion } from './types'
 import { StandardProperty, StandardType } from '../types'
+import { isObject, modelNameFormatter } from '../utils'
+import { SwaggerSchema, SwaggerToStandard, SwaggerVersion } from './types'
 
 /**
  * 转换 swagger schema 为标准输出属性格式
@@ -22,8 +22,11 @@ export function transformSchemaToStandardProperty(schema: SwaggerSchema, version
   // 是否是 map 数据结构
   let isMap = false
   const typeValue: StandardProperty[] = []
-  let refName = modelNameFormatter(schema['$ref']?.split('/')[version])
+  const refNameList = schema['$ref']?.split('/') || []
+  let refName = modelNameFormatter(refNameList[version] || refNameList[refNameList.length - 1])
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   let typeName: any =
+    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
     SwaggerToStandard[type!] || (refName ? StandardType.Object : StandardType.Unknown)
 
   const defaultTypeValue = { typeName: StandardType.Unknown, typeValue: [], isMap: false, enum: [] }
@@ -31,7 +34,8 @@ export function transformSchemaToStandardProperty(schema: SwaggerSchema, version
   // 数组情况特殊处理
   if (typeName === StandardType.Array) {
     if (items) {
-      refName = modelNameFormatter(items['$ref']?.split('/')[version])
+      const refNameList = items['$ref']?.split('/') || []
+      refName = modelNameFormatter(refNameList[version] || refNameList[refNameList.length - 1])
       if (!refName) {
         typeValue.push(transformSchemaToStandardProperty(items, version))
       }
@@ -50,14 +54,17 @@ export function transformSchemaToStandardProperty(schema: SwaggerSchema, version
     const { $ref, type, items } = additionalProperties
 
     isMap = true
-    refName = modelNameFormatter($ref?.split('/')[version])
+    const refNameList = $ref?.split('/') || []
+    refName = modelNameFormatter(refNameList[version] || refNameList[refNameList.length - 1])
+    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
     typeName = SwaggerToStandard[type!] || (refName ? StandardType.Object : StandardType.Unknown)
 
     if (!refName) {
       // 数组情况特殊处理
       if (typeName === StandardType.Array) {
         if (items) {
-          refName = modelNameFormatter(items['$ref']?.split('/')[version])
+          const refNameList = items['$ref']?.split('/') || []
+          refName = modelNameFormatter(refNameList[version] || refNameList[refNameList.length - 1])
           if (!refName) {
             typeValue.push(transformSchemaToStandardProperty(items, version))
           }
@@ -84,9 +91,11 @@ export function transformSchemaToStandardProperty(schema: SwaggerSchema, version
  * 查找出文档信息中的 schema 结构
  * @param obj
  */
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export function findSchema(obj: any) {
   if (!isObject(obj)) return
 
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   let schema: any
 
   for (const key in obj) {
@@ -109,9 +118,11 @@ export function findSchema(obj: any) {
  * 查询出 swagger3 文档 requestBody 中的引用名称
  * @param obj
  */
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export function findSwaggerV3RefName(obj: any) {
   if (!isObject(obj)) return
 
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   let refName: any
 
   for (const key in obj) {

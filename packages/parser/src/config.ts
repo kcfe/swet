@@ -1,6 +1,6 @@
-import { SwetParserConfig } from './types'
-import { CodeGenerator } from './generate/Generator'
 import { Adapter } from './adapters'
+import { CodeGenerator } from './generate/Generator'
+import { SwetParserConfig } from './types'
 
 /**
  * 默认配置项

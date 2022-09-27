@@ -9,6 +9,7 @@ export type SwaggerVersion = 2 | 3
  * swaggerV2 类型文档
  */
 export interface SwaggerV2DataSource {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   info: Record<string, any>
   tags: BaseInfoDescription[]
   paths: Record<string, SwaggerV2Paths>
@@ -19,6 +20,7 @@ export interface SwaggerV2DataSource {
  * swaggerV3 类型文档
  */
 export interface SwaggerV3DataSource {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   info: Record<string, any>
   tags: BaseInfoDescription[]
   paths: Record<string, SwaggerV3Paths>
@@ -68,6 +70,7 @@ interface SwaggerParameter extends SwaggerSchema {
 
 export interface SwaggerSchema {
   type?: SwaggerType
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   enum?: any[]
   $ref?: string
   required?: boolean

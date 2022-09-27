@@ -1,5 +1,5 @@
-import { isArray } from '../utils'
 import { Document, StandardDataSource } from '../types'
+import { isArray } from '../utils'
 import { swaggerV2Adapter } from './swaggerV2Adapter'
 import { swaggerV3Adapter } from './swaggerV3Adapter'
 import { SwaggerV2DataSource, SwaggerV3DataSource } from './types'

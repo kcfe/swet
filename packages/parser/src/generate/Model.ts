@@ -1,10 +1,10 @@
-import {
-  modelNameFormatter,
-  upperCaseFirstLetter,
-  transformPropertyToCode,
-  getPropertyDependenceModel,
-} from '../utils'
 import { StandardInterface } from '../types'
+import {
+  getPropertyDependenceModel,
+  modelNameFormatter,
+  transformPropertyToCode,
+  upperCaseFirstLetter,
+} from '../utils'
 
 /**
  * 生成模型代码所需的数据

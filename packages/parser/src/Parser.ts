@@ -1,8 +1,8 @@
+import { defaultParserConfig } from './config'
+import { CodeGenerator } from './generate/Generator'
 import { Mock } from './generate/Mock'
 import { Model } from './generate/Model'
 import { Service } from './generate/Service'
-import { defaultParserConfig } from './config'
-import { CodeGenerator } from './generate/Generator'
 import { Document, StandardDataSource, SwetParserConfig, SwetParserConfigRequired } from './types'
 // https://prettier.io/docs/en/browser.html(跨平台，支持浏览器使用)
 // eslint-disable-next-line @typescript-eslint/no-var-requires

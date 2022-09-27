@@ -193,7 +193,7 @@ export function transformPropertyToCode(property: StandardProperty, globalModel?
  */
 export function getPropertyDependenceModel(
   info: StandardProperty[],
-  interfaces: StandardInterface[]
+  interfaces: StandardInterface[],
 ): string[] {
   const totalNames = [] as string[]
   let tempNames = getPropertyModelNames(info)

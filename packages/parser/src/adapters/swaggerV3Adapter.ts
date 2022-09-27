@@ -1,10 +1,10 @@
 import {
   Method,
-  StandardType,
-  StandardService,
   ServiceParameter,
-  StandardProperty,
   StandardInterface,
+  StandardProperty,
+  StandardService,
+  StandardType,
 } from '../types'
 import { modelNameFormatter } from '../utils'
 import { SwaggerToStandard, SwaggerV3DataSource } from './types'
@@ -96,6 +96,14 @@ export function swaggerV3Adapter(originalData: SwaggerV3DataSource) {
           controller['parameters'].push(Object.assign(serviceParameter, baseValue, defaultVal))
         }
       }
+
+      const filterParameters: ServiceParameter[] = []
+      for (const parameter of controller['parameters']) {
+        if (filterParameters.find(v => v.refName && v.refName === parameter.refName)) continue
+        filterParameters.push(parameter)
+      }
+
+      controller['parameters'] = filterParameters
 
       // 响应解析
       const responseSchema = findSchema(responses)

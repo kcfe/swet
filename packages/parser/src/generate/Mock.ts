@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import mockjs from 'mockjs'
-import { isArray, isBoolean, isNumber, isObject, isString } from '../utils'
 import { StandardInterface, StandardProperty, StandardService, StandardType } from '../types'
+import { isArray, isBoolean, isNumber, isObject, isString } from '../utils'
 
 /**
  * 生成 mock 数据所需数据
