@@ -1,3 +1,4 @@
+import os from 'os'
 import path from 'path'
 import { fs } from 'zx'
 import { logger } from './logger'
@@ -28,8 +29,14 @@ export function isDirectory(file: string): boolean {
   return stats.isDirectory()
 }
 
-export function assert(v: unknown, message: string) {
+export function assert(v: unknown, message: string): void {
   if (!v) {
     logger.printErrorAndExit(message)
   }
 }
+
+const platform = os.platform()
+
+export const isWin = platform === 'win32'
+export const isLinux = platform === 'linux'
+export const isMac = platform === 'darwin'

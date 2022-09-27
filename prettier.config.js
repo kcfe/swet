@@ -4,6 +4,7 @@ module.exports = {
     require.resolve('prettier-plugin-organize-imports'),
   ],
   trailingComma: 'all',
+  printWidth: 100,
   tabWidth: 2,
   semi: false,
   singleQuote: true,

@@ -19,8 +19,7 @@
     "format": "prettier --write 'packages/**/*.{ts,tsx}'",
     "preinstall": "npx only-allow pnpm",
     "lint": "eslint 'packages/**/*.{ts,tsx}'",
-    "prepare": "husky install",
-    "preCommit": "lint-staged",
+    "prepare": "tsx scripts/prepare",
     "release": "tsx scripts/release",
     "test": "npm run test:once -- --watch",
     "test:once": "jest --runInBand --colors --forceExit"
