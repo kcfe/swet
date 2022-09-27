@@ -1,5 +1,5 @@
+import { Document, SwetParserConfig } from '@swet/parser'
 import { Request } from 'express'
-import { SwetParserConfig, Document } from '@swet/parser'
 import { Options } from 'http-proxy-middleware'
 
 /**

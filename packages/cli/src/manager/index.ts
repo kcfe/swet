@@ -1,21 +1,20 @@
-/* eslint-disable @typescript-eslint/no-var-requires */
+import { isArray, isFunction, isObject, SwetParser } from '@swet/parser'
+import fs from 'fs-extra'
+import path from 'path'
+import { format } from 'prettier'
+import { defaultMockDir, mockMethodPathFileName, swetConfigFileType } from '../config'
+import { jsTemplate, tsTemplate } from '../template'
+import { SwetCliConfigRequired } from '../types'
 import {
-  select,
-  logger,
-  loadDocument,
   checkFilePath,
-  isRemoteSource,
   compileTsToJs,
   getSwetCliConfig,
+  isRemoteSource,
+  loadDocument,
+  logger,
+  select,
 } from '../utils'
-import path from 'path'
-import fs from 'fs-extra'
-import { format } from 'prettier'
-import { SwetCliConfigRequired } from '../types'
-import { jsTemplate, tsTemplate } from '../template'
 import { parsePrevServiceInfo } from '../utils/check'
-import { isFunction, isArray, isObject, SwetParser } from '@swet/parser'
-import { defaultMockDir, mockMethodPathFileName, swetConfigFileType } from '../config'
 
 export class FileManager {
   /**
@@ -40,7 +39,7 @@ export class FileManager {
         swetCliConfigs.map((item, index) => ({
           name: item.name,
           value: index,
-        }))
+        })),
       )
 
       activeConfig = swetCliConfigs[Number(answer)]
@@ -62,7 +61,7 @@ export class FileManager {
       swetConfigFileType.map(i => ({
         name: i,
         value: i,
-      }))
+      })),
     )
 
     try {
@@ -181,10 +180,10 @@ export class Manager {
     if (checkInfo?.length) {
       fs.writeFileSync(
         path.join(filePrefixPath, 'check-name.json'),
-        JSON.stringify(checkInfo, null, 2)
+        JSON.stringify(checkInfo, null, 2),
       )
       logger.warn(
-        `[swet-cli] detected function name was changed, please confirm to [check-name.json] file`
+        `[swet-cli] detected function name was changed, please confirm to [check-name.json] file`,
       )
     }
   }
@@ -238,6 +237,7 @@ export class Manager {
 
       // 判断之前是否存在 mock 数据
       if (fs.existsSync(mockFilePath)) {
+        // eslint-disable-next-line @typescript-eslint/no-var-requires
         const data = require(mockFilePath)
         prevData = isFunction(data) ? data() : data
       }
@@ -264,7 +264,7 @@ export class Manager {
     })
 
     Promise.all(syncTaskList).then(() =>
-      logger.success(`[swet-cli] mock file generate successfully`)
+      logger.success(`[swet-cli] mock file generate successfully`),
     )
 
     // 将所有文档的路径和方法写一份存起来，mock 数据时需要使用
@@ -273,7 +273,7 @@ export class Manager {
       .map(({ method, path }) => ({ method, path }))
     fs.writeFileSync(
       path.join(process.cwd(), mockDir, mockMethodPathFileName),
-      JSON.stringify(mockDataList, null, 2)
+      JSON.stringify(mockDataList, null, 2),
     )
   }
 
@@ -344,7 +344,7 @@ export class Manager {
       (isObject(document) && !Object.keys((document as any).paths || {}).length)
     ) {
       logger.error(
-        `[swet-cli] parser document failed, please try [curl ${this.documentUrl}] to check\n\n current data: ${document}}`
+        `[swet-cli] parser document failed, please try [curl ${this.documentUrl}] to check\n\n current data: ${document}}`,
       )
     }
 

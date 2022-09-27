@@ -1,14 +1,14 @@
 /* eslint-disable no-empty */
 /* eslint-disable @typescript-eslint/no-var-requires */
-import path from 'path'
-import fs from 'fs-extra'
-import mockjs from 'mockjs'
 import { isFunction } from '@swet/parser'
-import { getSwetCliConfig, logger } from '.'
-import { SwetCliConfigRequired } from '../types'
-import { createProxyMiddleware } from 'http-proxy-middleware'
-import { defaultMockDir, mockMethodPathFileName } from '../config'
 import { Application, NextFunction, Request, RequestHandler, Response } from 'express'
+import fs from 'fs-extra'
+import { createProxyMiddleware } from 'http-proxy-middleware'
+import mockjs from 'mockjs'
+import path from 'path'
+import { getSwetCliConfig, logger } from '.'
+import { defaultMockDir, mockMethodPathFileName } from '../config'
+import { SwetCliConfigRequired } from '../types'
 
 /**
  * 处理 mock
@@ -63,7 +63,7 @@ function handlerMock(req: Request, config: SwetCliConfigRequired) {
           process.cwd(),
           mockDir,
           originalUrl,
-          `/${req.method.toLowerCase()}.js`
+          `/${req.method.toLowerCase()}.js`,
         )
 
         if (!fs.existsSync(swetMockFilePath)) {
@@ -72,7 +72,7 @@ function handlerMock(req: Request, config: SwetCliConfigRequired) {
             mockDir,
             defaultMockDir,
             originalUrl,
-            `/${req.method.toLowerCase()}.js`
+            `/${req.method.toLowerCase()}.js`,
           )
         }
       }
@@ -143,7 +143,7 @@ function swetMockHandler(
   res: Response,
   next: NextFunction,
   proxyInstance: RequestHandler,
-  swetCliConfigs: SwetCliConfigRequired[]
+  swetCliConfigs: SwetCliConfigRequired[],
 ) {
   const {
     mocks: { filterProxy, httpProxy },
@@ -160,7 +160,7 @@ function swetMockHandler(
 function swetMockMiddleware(app: Application) {
   const map = new Map()
   const swetCliConfigs = (getSwetCliConfig() || []).filter(
-    v => v.mocks?.forwardUrl
+    v => v.mocks?.forwardUrl,
   ) as SwetCliConfigRequired[]
 
   swetCliConfigs.forEach(v => {

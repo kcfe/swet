@@ -1,15 +1,15 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import path from 'path'
-import fs from 'fs-extra'
+import { isFunction, isObject } from '@swet/parser'
 import axios from 'axios'
-import { cloneDeep } from 'lodash'
-import { logger } from './logger'
-import { isObject, isFunction } from '@swet/parser'
-import { SwetCliConfigRequired, SwetCliConfig } from '../types'
+import fs from 'fs-extra'
 import inquirer, { ChoiceOptions } from 'inquirer'
+import { cloneDeep } from 'lodash'
+import path from 'path'
 import requireFromString from 'require-from-string'
-import { transpileModule, ModuleResolutionKind, ScriptTarget, ModuleKind } from 'typescript'
+import { ModuleKind, ModuleResolutionKind, ScriptTarget, transpileModule } from 'typescript'
 import { defaultSwetCliConfig, prettierConfigFileNames, swetConfigFileNames } from '../config'
+import { SwetCliConfig, SwetCliConfigRequired } from '../types'
+import { logger } from './logger'
 
 /**
  * 日志输出
@@ -79,7 +79,7 @@ export function compileTsToJs(content: string) {
 export async function select<T = string, U = ChoiceOptions>(
   message: string,
   choices: U[],
-  defaultValue?: string
+  defaultValue?: string,
 ): Promise<T> {
   const fields = [
     {
@@ -197,7 +197,7 @@ export function getSwetCliConfig(initialConfig?: SwetCliConfig | SwetCliConfig[]
       // 合并代码格式化配置文件
       config.prettierConfig = Object.assign(
         baseConfig.prettierConfig || {},
-        config.prettierConfig || {}
+        config.prettierConfig || {},
       )
       config.mocks = Object.assign(baseConfig.mocks || {}, config.mocks || {})
 
@@ -218,7 +218,7 @@ export function getSwetCliConfig(initialConfig?: SwetCliConfig | SwetCliConfig[]
  */
 export async function loadDocument(
   url: string,
-  headers: SwetCliConfigRequired['fetcher']
+  headers: SwetCliConfigRequired['fetcher'],
 ): Promise<any> {
   try {
     if (isFunction(headers)) {
@@ -252,13 +252,13 @@ export async function loadDocument(
     // 未关闭 sso 校验
     if ([302, 307].includes(status)) {
       logger.error(
-        `[swet-cli] [${url}] obtaining failed, please confirm that the back-end service has turned off sso verification`
+        `[swet-cli] [${url}] obtaining failed, please confirm that the back-end service has turned off sso verification`,
       )
     }
     // 连接后端失败
     if ([502].includes(status)) {
       logger.error(
-        `[swet-cli] [${url}] obtaining failed，please confirm whether the backend service is enabled`
+        `[swet-cli] [${url}] obtaining failed，please confirm whether the backend service is enabled`,
       )
     }
     // 未知错误，加载文档失败

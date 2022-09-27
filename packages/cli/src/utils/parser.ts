@@ -1,15 +1,16 @@
 import {
-  Service,
-  isObject,
   Adapter,
-  Document,
   CodeGenerator,
-  StandardService,
-  StandardProperty,
-  StandardInterface,
-  StandardDataSource,
-  upperCaseFirstLetter,
+  Document,
   getPropertyDependenceModel,
+  isObject,
+  isString,
+  Service,
+  StandardDataSource,
+  StandardInterface,
+  StandardProperty,
+  StandardService,
+  upperCaseFirstLetter,
 } from '@swet/parser'
 import { SwetCliConfigRequired } from '../types'
 
@@ -267,7 +268,13 @@ export function generateDefaultServiceName(params: {
 
   // 首先还是优先使用 operationId(但是先对 operationId 做一些处理)
   // 将 serviceName_1，serviceName_2 处理掉后缀
-  let name = operationId.split('_')[0]
+  const names = operationId?.split('_') || []
+  let name = names[0]
+
+  if (isString(names[names.length - 1])) {
+    name = operationId?.replace(/_/g, '')
+  }
+
   // 再将 UsingGET、UsingPOST 等处理成 Get、Post 的形式
   const regExp = /Using(GET|POST|DELETE|PUT|PATCH|HEAD|CONNECT|OPTIONS|TRACE)/g
 
@@ -293,5 +300,5 @@ export function generateDefaultServiceName(params: {
     sliceIndex -= 1
   }
 
-  return name
+  return name[0].toLowerCase() + name.slice(1)
 }

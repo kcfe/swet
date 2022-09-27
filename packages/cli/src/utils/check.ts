@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import path from 'path'
 import fs from 'fs-extra'
 import jscodeshift from 'jscodeshift'
+import path from 'path'
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 const parser = require('jscodeshift/parser/tsx')()
 
