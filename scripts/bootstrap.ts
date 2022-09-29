@@ -160,7 +160,7 @@ Options:
   --skipTests skip package test
   --skipBuild skip package build
 \`\`\`
-  `.trim() + '\n'
+  `.trim() + '\n',
     )
   }
 }
@@ -178,7 +178,7 @@ function ensureSrcIndex(shortName: string): void {
       indexPath,
       `
 export {}
-  `.trim() + '\n'
+  `.trim() + '\n',
     )
   }
 }
@@ -195,7 +195,7 @@ import { defineConfig } from 'father'
 export default defineConfig({
   extends: '../../.fatherrc.base.ts',
 })
-  `.trim() + '\n'
+  `.trim() + '\n',
     )
   }
 }

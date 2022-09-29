@@ -17,19 +17,19 @@
 
 ## 📦 开始
 
-1、项目下安装 `@ad/swet-cli` 工具包
+1、项目下安装 `@swet/cli` 工具包
 
 ```bash
 # 选择一个你喜欢的包管理器
 
 # npm
-$ npm i @ad/swet-cli -D
+$ npm i @swet/cli -D
 
 # pnpm
-$ pnpm i @ad/swet-cli -D
+$ pnpm i @swet/cli -D
 
 # yarn
-$ yarn add @ad/swet-cli -D
+$ yarn add @swet/cli -D
 ```
 
 2、package.json 下准备脚本命令
@@ -80,6 +80,10 @@ interface SwetCliConfig {
    * 默认值：['.prettierrc', 'prettier.config.js', '.prettierrc.js']读取项目下第首先读取到的配置文件
    */
   prettierConfig?: Record<string, any>
+  /**
+   * 自定义获取文档的方法或补充 headers 信息
+   */
+  fetcher?: Record<string, any> | (() => Document)
   /**
    * 对 service 默认模版自定义拓展
    */
@@ -138,7 +142,7 @@ interface SwetCliConfig {
 1、如何在项目中接入多份文档？
 
 ```ts
-import { SwetCliConfig } from '@ad/swet-cli'
+import { SwetCliConfig } from '@swet/cli'
 
 export const swet: SwetCliConfig[] = [
   {
@@ -160,7 +164,7 @@ export const swet: SwetCliConfig[] = [
   - 首先将 swet 提供的 `webpack dev server` 中间件挂载
 
   ```ts
-  import { swetMockMiddleware } from '@ad/swet-cli'
+  import { swetMockMiddleware } from '@swet/cli'
 
   module.exports = {
   //...

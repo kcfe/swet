@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 //@ts-nocheck
-import { SwetCliConfig } from '@ad/swet-cli'
+import { SwetCliConfig } from '@swet/cli'
 
 export const swet: SwetCliConfig = {
   mocks: {

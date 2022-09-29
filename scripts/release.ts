@@ -1,6 +1,6 @@
+import { release, resolveBin, step } from '@eljs/release'
 import { argv } from 'zx'
 import 'zx/globals'
-import { release, resolveBin, step } from '@eljs/release'
 
 import { assert } from './utils'
 
