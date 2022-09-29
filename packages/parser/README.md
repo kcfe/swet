@@ -7,7 +7,7 @@ swet parser
 ### 1. 安装
 
 ```bash
-$ npm i @swet/parser -S
+$ npm i @swet/parser
 // or
 $ yarn add @swet/parser
 // or
@@ -17,11 +17,10 @@ $ pnpm add @swet/parser
 ### 2. 使用
 
 ```ts
-import parser from '@swet/parser'
+import { SwetParser } from '@swet/parser'
 ```
 
 ## API
-
 
 ## 开发
 
@@ -33,7 +32,7 @@ $ pnpm -F '@swet/parser' dev
 
 ## 发布
 
-### 1. [语义化提交 Commit](https://www.conventionalcommits.org/en/v1.0.0/#summary) 
+### 1. [语义化提交 Commit](https://www.conventionalcommits.org/en/v1.0.0/#summary)
 
 ```bash
 $ git commit -m 'feat(parser): add some feature'
