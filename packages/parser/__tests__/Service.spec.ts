@@ -24,7 +24,7 @@ describe('test generate service code', () => {
         `    headers: { 'Content-Type': 'application/json' },\n` +
         '  });\n\n' +
         '  return result;\n' +
-        '}\n'
+        '}\n',
     )
   })
 
@@ -34,7 +34,7 @@ describe('test generate service code', () => {
     expect(saveUsingPOST?.models.map(v => v.name)).toEqual(['User', 'ResultUser'])
     expect(saveUsingPOST?.content).toBe(
       '/** user-controller 保存用户 */\n' +
-        'export async function saveUsingPOST(payload?: User) {\n' +
+        'export async function saveUsingPOST(payload: User) {\n' +
         '  const data = payload;\n\n' +
         '  const result = await axios.request<ResultUser>({\n' +
         '    url: `/users`,\n' +
@@ -43,7 +43,7 @@ describe('test generate service code', () => {
         `    headers: { 'Content-Type': 'application/json' },\n` +
         '  });\n\n' +
         '  return result;\n' +
-        '}\n'
+        '}\n',
     )
   })
 
@@ -62,7 +62,7 @@ describe('test generate service code', () => {
         `    headers: { 'Content-Type': 'application/json' },\n` +
         '  });\n\n' +
         '  return result;\n' +
-        '}\n'
+        '}\n',
     )
   })
 
@@ -76,7 +76,7 @@ describe('test generate service code', () => {
     ])
     expect(respUserMapUsingPOST?.content).toBe(
       '/** user-controller 以Map入参 */\n' +
-        'export async function respUserMapUsingPOST(payload?: Record<string, any>) {\n' +
+        'export async function respUserMapUsingPOST(payload: Record<string, any>) {\n' +
         '  const data = payload;\n\n' +
         '  const result = await axios.request<ResultMapstringUser>({\n' +
         '    url: `/users/respUserMap`,\n' +
@@ -85,7 +85,7 @@ describe('test generate service code', () => {
         `    headers: { 'Content-Type': 'application/json' },\n` +
         '  });\n\n' +
         '  return result;\n' +
-        '}\n'
+        '}\n',
     )
   })
 
@@ -104,13 +104,13 @@ describe('test generate service code', () => {
         `    headers: { 'Content-Type': 'application/json' },\n` +
         '  });\n\n' +
         '  return result;\n' +
-        '}\n'
+        '}\n',
     )
   })
 
   it('test saveUserWithOutParamUsingPOST service', () => {
     const saveUserWithOutParamUsingPOST = serviceList.find(
-      v => v.name === 'saveUserWithOutParamUsingPOST'
+      v => v.name === 'saveUserWithOutParamUsingPOST',
     )
     expect(saveUserWithOutParamUsingPOST).toBeDefined()
     expect(saveUserWithOutParamUsingPOST?.models.map(v => v.name)).toEqual(['User', 'ResultUser'])
@@ -125,7 +125,7 @@ describe('test generate service code', () => {
         `    headers: { 'Content-Type': 'application/json' },\n` +
         '  });\n\n' +
         '  return result;\n' +
-        '}\n'
+        '}\n',
     )
   })
 
@@ -135,7 +135,7 @@ describe('test generate service code', () => {
     expect(idCardUsingPOST?.models.map(v => v.name)).toEqual(['Resultstring'])
     expect(idCardUsingPOST?.content).toBe(
       '/** user-controller 上传身份证 */\n' +
-        'export async function idCardUsingPOST(payload?: Record<string, any>) {\n' +
+        'export async function idCardUsingPOST(payload: Record<string, any>) {\n' +
         '  const data: any = new FormData();\n' +
         `  for (const key in payload || {}) {\n` +
         `    data.append(key, payload[key]);\n` +
@@ -147,7 +147,7 @@ describe('test generate service code', () => {
         `    headers: { 'Content-Type': 'multipart/form-data' },\n` +
         '  });\n\n' +
         '  return result;\n' +
-        '}\n'
+        '}\n',
     )
   })
 
@@ -164,7 +164,7 @@ describe('test generate service code', () => {
         `    headers: { 'Content-Type': 'application/json' },\n` +
         '  });\n\n' +
         '  return result;\n' +
-        '}\n'
+        '}\n',
     )
   })
 
@@ -183,13 +183,13 @@ describe('test generate service code', () => {
         `    headers: { 'Content-Type': 'application/json' },\n` +
         '  });\n\n' +
         '  return result;\n' +
-        '}\n'
+        '}\n',
     )
   })
 
   it('test uploadRegisterAccountUsingPOST service', () => {
     const uploadRegisterAccountUsingPOST = serviceList.find(
-      v => v.name === 'uploadRegisterAccountUsingPOST'
+      v => v.name === 'uploadRegisterAccountUsingPOST',
     )
     expect(uploadRegisterAccountUsingPOST).toBeDefined()
     expect(uploadRegisterAccountUsingPOST?.models.map(v => v.name)).toEqual([
@@ -209,13 +209,13 @@ describe('test generate service code', () => {
         `    headers: { 'Content-Type': 'multipart/form-data' },\n` +
         '  });\n\n' +
         '  return result;\n' +
-        '}\n'
+        '}\n',
     )
   })
 
   it('test listAgentBailDeductionV2UsingPOST_1 service', () => {
     const listAgentBailDeductionV2UsingPOST_1 = serviceList.find(
-      v => v.name === 'listAgentBailDeductionV2UsingPOST_1'
+      v => v.name === 'listAgentBailDeductionV2UsingPOST_1',
     )
     expect(listAgentBailDeductionV2UsingPOST_1).toBeDefined()
     expect(listAgentBailDeductionV2UsingPOST_1?.models.map(v => v.name)).toEqual([
@@ -224,7 +224,7 @@ describe('test generate service code', () => {
     ])
     expect(listAgentBailDeductionV2UsingPOST_1?.content).toBe(
       '/** ad-dsp-agent-transfer-controller 保证金处罚记录 */\n' +
-        'export async function listAgentBailDeductionV2UsingPOST_1(payload?: AgentBailDecRecordParam) {\n' +
+        'export async function listAgentBailDeductionV2UsingPOST_1(payload: AgentBailDecRecordParam) {\n' +
         '  const params = payload;\n\n' +
         '  const result = await axios.request<void>({\n' +
         '    url: `/rest/dsp/agent/control-panel/finance/bail/deduction/list/v2`,\n' +
@@ -233,7 +233,7 @@ describe('test generate service code', () => {
         `    headers: { 'Content-Type': 'application/json' },\n` +
         '  });\n\n' +
         '  return result;\n' +
-        '}\n'
+        '}\n',
     )
   })
 
@@ -250,7 +250,7 @@ describe('test generate service code', () => {
         `    headers: { 'Content-Type': 'application/json' },\n` +
         '  });\n\n' +
         '  return result;\n' +
-        '}\n'
+        '}\n',
     )
   })
 
@@ -272,7 +272,7 @@ describe('test generate service code', () => {
         `    headers: { 'Content-Type': 'application/json' },\n` +
         '  });\n\n' +
         '  return result;\n' +
-        '}\n'
+        '}\n',
     )
   })
 
@@ -294,7 +294,7 @@ describe('test generate service code', () => {
         `    headers: { 'Content-Type': 'application/json' },\n` +
         '  });\n\n' +
         '  return result;\n' +
-        '}\n'
+        '}\n',
     )
   })
 })
