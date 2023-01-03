@@ -110,11 +110,18 @@ export class SwetParser {
       // model info
       const models = instance.getDependenceModelInfo()
 
+      const { declare: declareCode, payloadString } = instance.getDeclareAndParameterCode()
+
+      const declare = format(declareCode, this.formatConfig)
+
       const defaultCode = this.generator.generateServiceCodeTemplate(instance)
 
       const content = format(defaultCode, this.formatConfig)
 
-      const serviceInfo = Object.assign({ content, models }, service)
+      const serviceInfo = Object.assign(
+        { content, models, declare, payload: payloadString },
+        service,
+      )
 
       return serviceInfo
     })
